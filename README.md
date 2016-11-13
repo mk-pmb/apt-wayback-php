@@ -16,7 +16,13 @@ Other PHP versions might work as well.
 How it works
 ------------
 
-  * :TODO: apt config
+  * Install on some webserver, e.g. http://server.local/apt-wayback/
+  * Make your own `config.local.php` based on `example.config.local.php`
+  * In your `/etc/apt/sources.list.d/whatever.list`, change your
+    `deb` and/or `deb-src` line URLs to your `r.php` URL + slash + repo name,
+    e.g.<br />`deb http://whatever.net/ubuntu trusty main` -><br />
+    `deb http://server.local/apt-wayback/r.php/whatever trusty main`
+  * Let your package manager scan for updated package lists.
   * The PHP script checks the date of the Wayback Machine's latest copy
     of that file.
   * If file was archived less than `max-age` ago,
