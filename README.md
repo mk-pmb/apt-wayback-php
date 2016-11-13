@@ -53,7 +53,21 @@ Q&A
       * What should happen when the request that invoked curl is aborted?
         Is that what actually does happen?
 
+  * Does this approach waste U.S. tax money?
+    * afaik, no.
+      * Memory for new files: covered by archive.org mission.
+      * Duplicates due to saving files that haven't changed on the web:
+        Won't cost memory. They're professionals, they know deduplication.
+        I trust that their file cluster always stores exactly as many copies
+        of each file as they want to store.
+      * Memory for meta data about when a file changed: CIA needs this info
+        anyway, so it's just about which public agency uses the tax money
+        to save the meta data.
 
+  * Does this approach violate the Wayback Machine ToS?
+    * Yes, so expect to maybe get banned if they catch you.
+      Last time I checked, they preferred you use their official API
+      but I'm too lazy to implement that right now. PR welcome.
 
 
 
