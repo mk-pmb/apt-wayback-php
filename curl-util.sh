@@ -4,7 +4,6 @@
 
 function curl_datefmt () {
   local URLS=( "$@" )
-  [ "$1" == --env ] && URLS=( "$WAYBACK_FILE_URL" )
   local UA_ACNG='Debian Apt-Cacher-NG/0.7.2'
   local CURL_OPTS=(
     --head
@@ -22,7 +21,13 @@ function curl_datefmt () {
         curl "${CURL_OPTS[@]}" -- "$URL_PRFX$ORIG_URL" || return $?;;
       * ) echo 'HTTP/1.0 400 Bad Request';;
     esac
-  done | sed -re '
+  done
+  return 0
+}
+
+
+function curl_datefmt_ini () {
+  "${FUNCNAME%_*}" "$@" | sed -re '
     s~\s+$~~
     /^$/d
     s~^(Server|Content-Length|(Proxy-|)Connection|Set-Cookie):\s~\r~i
@@ -36,7 +41,12 @@ function curl_datefmt () {
       )\S*(\S{20}>?;?\s)~\1[...]\3~
     s~:\s*~=~
     '
-  return 0
+  return "${PIPESTATUS[0]}"
+}
+
+
+function curl_datefmt_ini_env () {
+  "${FUNCNAME%_*}" "$WAYBACK_FILE_URL"; return $?
 }
 
 
@@ -54,4 +64,4 @@ function curl_datefmt () {
 
 
 
-[ "$1" == --lib ] && return 0; curl_datefmt "$@"; exit $?
+[ "$1" == --lib ] && return 0; curl_"$1" "${@:2}"; exit $?

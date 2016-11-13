@@ -17,7 +17,7 @@ How it works
 ------------
 
   * Install on some webserver, e.g. http://server.local/apt-wayback/
-  * Make your own `config.local.php` based on `example.config.local.php`
+  * Make your own `local-config.php` based on `example.local-config.php`
   * In your `/etc/apt/sources.list.d/whatever.list`, change your
     `deb` and/or `deb-src` line URLs to your `r.php` URL + slash + repo name,
     e.g.<br />`deb http://whatever.net/ubuntu trusty main` -><br />

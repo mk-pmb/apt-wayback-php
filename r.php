@@ -1,7 +1,7 @@
 <?php # -*- coding: utf-8, tab-width: 2 -*-
 
 Header('Content-Type: text/plain');
-define(BASEPATH, dirname(__FILE__) . '/');
+define('BASEPATH', dirname(__FILE__) . '/');
 
 $debuglv = 0;
 
@@ -19,7 +19,7 @@ $rqpath = (string)@$_SERVER['PATH_INFO'];
 $rqpath = explode('/', ltrim($rqpath, '/'));
 $rqrepo = (string)@array_shift($rqpath);
 
-require BASEPATH . 'config.defaults.php';
+require BASEPATH . 'local-config.php';
 
 function cfgv($key) {
   global $cfg, $rqrepo;
@@ -76,7 +76,7 @@ putenv("WAYBACK_FILE_URL=$fileurl");
 $wbm_head = array();
 $retval = 'skip';
 if ($debuglv <= 1) {
-  exec('bash head_ini.sh --env 2>&1', $wbm_head, $retval);
+  exec('bash curl-util.sh datefmt_ini_env 2>&1', $wbm_head, $retval);
 }
 array_push($wbm_head, "CURL-RV=$retval");
 

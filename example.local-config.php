@@ -1,5 +1,7 @@
 <?php # -*- coding: utf-8, tab-width: 2 -*-
 
+require BASEPATH . 'default-config.php';
+
 $cfg['*']['proxy_spec'] = 'http://localhost:3128/';
 $cfg['*']['min-uts'] = strtotime('2016-11-10 21:15');
 

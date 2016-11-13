@@ -1,7 +1,7 @@
 <?php # -*- coding: utf-8, tab-width: 2 -*-
 
 # Default config.
-# use config.local.php to override settings with your preferred values.
+# use local-config.php to override settings with your preferred values.
 
 $cfg = array();
 
@@ -53,6 +53,3 @@ $cfg['example'] = array(
   # check https://example.net/deb/ubuntu/dists/xenial/Release.gz
   # Usually you'll want the last character to be a slash.
 );
-
-
-require BASEPATH . 'config.local.php';
